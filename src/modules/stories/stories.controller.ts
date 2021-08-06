@@ -53,9 +53,9 @@ export class StoriesController {
 
   @UseGuards(AuthGuard('jwt'))
   @Post('upvote')
-  async upvote(@Body() id: number, @Request() req): Promise<StoryEntity> {
+  async upvote(@Body() body, @Request() req): Promise<StoryEntity> {
     // create a new story and return the newly created story
-    return await this.storieservice.upvote(id, req.user.id);
+    return await this.storieservice.upvote(body.id, req.user.id);
   }
 
   @UseGuards(AuthGuard('jwt'))
@@ -66,7 +66,7 @@ export class StoriesController {
     @Request() req,
   ): Promise<StoryEntity> {
     // get the number of row affected and the updated story
-    const { numberOfAffectedRows, updatedPost } =
+    const { numberOfAffectedRows, updatedStory } =
       await this.storieservice.update(id, story, req.user.id);
 
     // if the number of row affected is zero, it means the story doesn't exist in our db
@@ -75,7 +75,7 @@ export class StoriesController {
     }
 
     // return the updated story
-    return updatedPost;
+    return updatedStory;
   }
 
   @UseGuards(AuthGuard('jwt'))

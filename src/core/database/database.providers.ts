@@ -4,7 +4,7 @@ import { SEQUELIZE, DEVELOPMENT, TEST, PRODUCTION } from '../constants';
 import { databaseConfig } from './database.config';
 import { User } from '../../modules/users/entities/user.entity';
 import { Story } from '../../modules/stories/story.entity';
-
+import { Votes } from '../../modules/stories/votes.entity';
 
 export const databaseProviders = [
   {
@@ -42,10 +42,7 @@ export const databaseProviders = [
         },
       );
 
-      sequelize.addModels([
-        User,
-        Story,
-      ]);
+      sequelize.addModels([User, Story, Votes]);
       await sequelize.sync();
       return sequelize;
     },

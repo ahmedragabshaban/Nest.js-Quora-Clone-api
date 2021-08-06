@@ -17,11 +17,20 @@ export class StoriesService {
     return await this.storyRepository.create<Story>(story);
   }
 
-  async upvote(storyId, userId: string): Promise<any> {
+  async upvote(storyId, userId): Promise<any> {
     //Check if voted before.
-    return await this.votesRepository.findOne({
+    const result = await this.votesRepository.findOne({
       where: { storyId, userId },
     });
+    this.votesRepository.create<any>(storyId, userId);
+    if (!result) {
+      const req = await this.storyRepository.update(
+        { votes: +1 },
+        { where: { id: storyId } },
+      );
+    } else {
+      return storyId;
+    }
   }
 
   async userStorirs(userId: string): Promise<{
@@ -60,11 +69,11 @@ export class StoriesService {
   }
 
   async update(id, data, userId) {
-    const [numberOfAffectedRows, [updatedPost]] =
+    const [numberOfAffectedRows, [updatedStory]] =
       await this.storyRepository.update(
         { ...data },
         { where: { id, userId }, returning: true },
       );
-    return { numberOfAffectedRows, updatedPost };
+    return { numberOfAffectedRows, updatedStory };
   }
 }

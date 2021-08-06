@@ -33,13 +33,13 @@ export class Story extends Model<Story> {
 
   @Column({
     type: DataType.INTEGER,
-    defaultValue: 0
+    defaultValue: 0,
   })
   status: number;
 
   @Column({
     type: DataType.INTEGER,
-    defaultValue: 0
+    defaultValue: 0,
   })
   votes: number;
 
@@ -52,8 +52,4 @@ export class Story extends Model<Story> {
 
   @BelongsTo(() => User)
   user: User;
-
-
-  @HasMany(() => Votes)
-  votes: Votes;
 }

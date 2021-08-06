@@ -8,8 +8,7 @@ export class AuthService {
   constructor(
     private readonly userService: UsersService,
     private readonly jwtService: JwtService,
-
-  ) { }
+  ) {}
 
   async validateUser(email: string, pass: string) {
     // find if user exist with this email
@@ -60,5 +59,4 @@ export class AuthService {
     const match = await bcrypt.compare(enteredPassword, dbPassword);
     return match;
   }
-
 }

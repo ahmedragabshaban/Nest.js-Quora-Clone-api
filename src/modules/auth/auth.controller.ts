@@ -6,7 +6,7 @@ import { DoesUserExist } from '../../core/guards/doesUserExist.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {}
 
   // @UseGuards(AuthGuard('jwt'))
   @Post('login')
