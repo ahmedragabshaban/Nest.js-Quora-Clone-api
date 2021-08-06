@@ -5,9 +5,11 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from 'sequelize-typescript';
 
 import { User } from '../users/entities/user.entity';
+import { Votes } from './votes.entity';
 
 @Table
 export class Story extends Model<Story> {
@@ -50,4 +52,8 @@ export class Story extends Model<Story> {
 
   @BelongsTo(() => User)
   user: User;
+
+
+  @HasMany(() => Votes)
+  votes: Votes;
 }

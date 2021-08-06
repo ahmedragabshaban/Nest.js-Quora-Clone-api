@@ -18,7 +18,7 @@ import { StoryDto } from './dto/story.dto';
 
 @Controller('stories')
 export class StoriesController {
-  constructor(private readonly storieservice: StoriesService) { }
+  constructor(private readonly storieservice: StoriesService) {}
 
   @Get()
   async findAll() {
@@ -31,7 +31,6 @@ export class StoriesController {
   async userStorirs(@Request() req) {
     return await this.storieservice.userStorirs(req.user.id);
   }
-
 
   @Get(':id')
   async findOne(@Param('id') id: number): Promise<StoryEntity> {
@@ -52,7 +51,6 @@ export class StoriesController {
     return await this.storieservice.create(story, req.user.id);
   }
 
-
   @UseGuards(AuthGuard('jwt'))
   @Post('upvote')
   async upvote(@Body() id: number, @Request() req): Promise<StoryEntity> {
@@ -60,19 +58,16 @@ export class StoriesController {
     return await this.storieservice.upvote(id, req.user.id);
   }
 
-
   @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,
     @Body() story: StoryDto,
-    @Request() req): Promise<StoryEntity> {
+    @Request() req,
+  ): Promise<StoryEntity> {
     // get the number of row affected and the updated story
-    const { numberOfAffectedRows, updatedPost } = await this.storieservice.update(
-      id,
-      story,
-      req.user.id,
-    );
+    const { numberOfAffectedRows, updatedPost } =
+      await this.storieservice.update(id, story, req.user.id);
 
     // if the number of row affected is zero, it means the story doesn't exist in our db
     if (numberOfAffectedRows === 0) {
