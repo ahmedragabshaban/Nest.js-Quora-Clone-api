@@ -15,14 +15,20 @@ export class StoriesService {
     return await this.postRepository.create<Story>(story);
   }
 
-  async userStorirs(userId: string): Promise<Story[]> {
-    return await this.postRepository.findAll<Story>({
+  async userStorirs(userId: string): Promise<{
+    rows: Story[];
+    count: number;
+}> {
+    return await this.postRepository.findAndCountAll<Story>({
       where: { userId },
     });
   }
 
-  async findAll(): Promise<Story[]> {
-    return await this.postRepository.findAll<Story>({
+  async findAll(): Promise<{
+    rows: Story[];
+    count: number;
+}> {
+    return await this.postRepository.findAndCountAll<Story>({
       include: [{ model: User, attributes: { exclude: ['id', 'password', 'updatedAt', 'createdAt'] } }],
       order:['createdAt','votes']
     });
