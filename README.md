@@ -1,11 +1,6 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-<img src="
-https://i.imgur.com/bhnrqws.png" alt="Nest Logo" />
-<img src="https://miro.medium.com/max/646/1*c_WGJvTPSex9PEDr3rvZcQ.png"  alt="Nest Logo" />
-
+<img src="https://i.imgur.com/bhnrqws.png" alt="Nest Logo" />
+<img width="300px" src="https://prnewswire2-a.akamaihd.net/p/1893751/sp/189375100/thumbnail/entry_id/0_76ne1q3x/def_height/2700/def_width/2700/version/100012/type/1"  alt="Nest Logo" /></p>
 
 
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
