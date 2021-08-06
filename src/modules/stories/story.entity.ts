@@ -29,6 +29,12 @@ export class Story extends Model<Story> {
   })
   status: number;
 
+  @Column({
+    type: DataType.INTEGER,
+    defaultValue: 0
+  })
+  votes: number;
+
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
