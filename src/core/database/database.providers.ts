@@ -26,9 +26,9 @@ export const databaseProviders = [
       }
 
       const sequelize = new Sequelize(
-        'df7agiv9jbp9hc',
-        'sdwsmloermsari',
-        '685af9d4f9614e9ae6dcb4f9c99a82b6e1910d84a15d4a8ec471ca4bacc16a2b',
+        'dc1922ej4sfkep',
+        'btzniqvnwflcmf',
+        'c68720400874625ae1713b50ed86394ae13843e96533def225f7bab679bc21ad',
         {
           dialect: 'postgres',
           protocol: 'postgres',
