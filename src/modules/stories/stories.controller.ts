@@ -13,7 +13,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 
 import { StoriesService } from './stories.service';
-import { Story as PostEntity } from './story.entity';
+import { Story as StoryEntity } from './story.entity';
 import { StoryDto } from './dto/story.dto';
 
 @Controller('stories')
@@ -27,56 +27,55 @@ export class StoriesController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: number): Promise<PostEntity> {
-    // find the post with this id
-    const post = await this.storieservice.findOne(id);
+  async findOne(@Param('id') id: number): Promise<StoryEntity> {
+    // find the story with this id
+    const story = await this.storieservice.findOne(id);
 
-    // if the post doesn't exit in the db, throw a 404 error
-    if (!post) {
+    // if the story doesn't exit in the db, throw a 404 error
+    if (!story) {
       throw new NotFoundException("This Post doesn't exist");
     }
 
-    // if post exist, return the post
-    return post;
+    // if story exist, return the story
+    return story;
   }
 
-  // @UseGuards(AuthGuard('jwt'))
-  // @Post()
-  // async create(@Body() post: StoryDto, @Request() req): Promise<PostEntity> {
-  //   // create a new post and return the newly created post
-  //   // return await this.storieservice.create(post, req.user.id);
-  // }
+  @UseGuards(AuthGuard('jwt'))
+  @Post()
+  async create(@Body() story: StoryDto, @Request() req): Promise<StoryEntity> {
+    // create a new story and return the newly created story
+    return await this.storieservice.create(story, req.user.id);
+  }
 
   @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
     @Param('id') id: number,
-    @Body() post: StoryDto,
-    @Request() req,
-  ): Promise<PostEntity> {
-    // get the number of row affected and the updated post
+    @Body() story: StoryDto,
+    @Request() req): Promise<StoryEntity> {
+    // get the number of row affected and the updated story
     const { numberOfAffectedRows, updatedPost } = await this.storieservice.update(
       id,
-      post,
+      story,
       req.user.id,
     );
 
-    // if the number of row affected is zero, it means the post doesn't exist in our db
+    // if the number of row affected is zero, it means the story doesn't exist in our db
     if (numberOfAffectedRows === 0) {
       throw new NotFoundException("This Post doesn't exist");
     }
 
-    // return the updated post
+    // return the updated story
     return updatedPost;
   }
 
   @UseGuards(AuthGuard('jwt'))
   @Delete(':id')
   async remove(@Param('id') id: number, @Request() req) {
-    // delete the post with this id
+    // delete the story with this id
     const deleted = await this.storieservice.delete(id, req.user.id);
 
-    // if the number of row affected is zero, then the post doesn't exist in our db
+    // if the number of row affected is zero, then the story doesn't exist in our db
     if (deleted === 0) {
       throw new NotFoundException("This Post doesn't exist");
     }

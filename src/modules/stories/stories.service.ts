@@ -1,7 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 
 import { Story } from './story.entity';
-import { StoryDto } from './dto/story.dto';
 import { User } from '../users/entities/user.entity';
 import { STORY_REPOSITORY } from '../../core/constants';
 
@@ -11,9 +10,10 @@ export class StoriesService {
     @Inject(STORY_REPOSITORY) private readonly postRepository: typeof Story,
   ) { }
 
-  // async create(post: PostDto, userId): Promise<Post> {
-  //   return await this.postRepository.create<Post>({ ...post, userId });
-  // }
+  async create(story, userId: string): Promise<Story> {
+    story.userId = userId
+    return await this.postRepository.create<Story>(story);
+  }
 
   async findAll(): Promise<Story[]> {
     return await this.postRepository.findAll<Story>({
