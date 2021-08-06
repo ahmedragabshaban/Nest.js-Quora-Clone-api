@@ -18,8 +18,9 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidateInputPipe());
   // await app.listen(3000);
   app.enableCors({
-    origin: false,
+    origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
 });
 
   await app.listen(process.env.PORT || 3000);
