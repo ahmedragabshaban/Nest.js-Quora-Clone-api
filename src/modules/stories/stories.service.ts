@@ -24,6 +24,7 @@ export class StoriesService {
   async findAll(): Promise<Story[]> {
     return await this.postRepository.findAll<Story>({
       include: [{ model: User, attributes: { exclude: ['id', 'password', 'updatedAt', 'createdAt'] } }],
+      order:['createdAt','votes']
     });
   }
 
