@@ -2,6 +2,12 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
 </p>
 
+<img src="
+https://i.imgur.com/bhnrqws.png" alt="Nest Logo" />
+<img src="https://miro.medium.com/max/646/1*c_WGJvTPSex9PEDr3rvZcQ.png"  alt="Nest Logo" />
+
+
+
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
