@@ -7,4 +7,7 @@ export class StoryDto {
 
   @IsNotEmpty()
   readonly body: string;
+  
+  @IsNotEmpty()
+  readonly status: string;
 }

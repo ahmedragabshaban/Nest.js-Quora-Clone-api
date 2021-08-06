@@ -25,7 +25,7 @@ export class Story extends Model<Story> {
 
   @Column({
     type: DataType.TEXT,
-    allowNull: false,
+    allowNull: true,
   })
   image: string;
 
