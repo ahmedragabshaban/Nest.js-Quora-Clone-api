@@ -1,3 +1,4 @@
+## Please, Change env File to .env
 <p align="center">
 <img src="https://i.imgur.com/bhnrqws.png" alt="Nest Logo" />
 <img width="300px" src="https://prnewswire2-a.akamaihd.net/p/1893751/sp/189375100/thumbnail/entry_id/0_76ne1q3x/def_height/2700/def_width/2700/version/100012/type/1"  alt="Nest Logo" /></p>
