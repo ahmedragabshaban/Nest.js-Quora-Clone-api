@@ -30,12 +30,10 @@ export class StoriesController {
   async findOne(@Param('id') id: number): Promise<StoryEntity> {
     // find the story with this id
     const story = await this.storieservice.findOne(id);
-
     // if the story doesn't exit in the db, throw a 404 error
     if (!story) {
-      throw new NotFoundException("This Post doesn't exist");
+      throw new NotFoundException("This Story doesn't exist");
     }
-
     // if story exist, return the story
     return story;
   }
@@ -62,7 +60,7 @@ export class StoriesController {
 
     // if the number of row affected is zero, it means the story doesn't exist in our db
     if (numberOfAffectedRows === 0) {
-      throw new NotFoundException("This Post doesn't exist");
+      throw new NotFoundException("This Story doesn't exist");
     }
 
     // return the updated story
@@ -77,7 +75,7 @@ export class StoriesController {
 
     // if the number of row affected is zero, then the story doesn't exist in our db
     if (deleted === 0) {
-      throw new NotFoundException("This Post doesn't exist");
+      throw new NotFoundException("This Story doesn't exist");
     }
 
     // return success message

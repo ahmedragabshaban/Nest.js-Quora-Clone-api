@@ -23,6 +23,12 @@ export class Story extends Model<Story> {
   })
   body: string;
 
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
+  status: number;
+
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,
