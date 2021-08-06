@@ -6,17 +6,17 @@ import { DoesUserExist } from '../../core/guards/doesUserExist.guard';
 
 @Controller('auth')
 export class AuthController {
-    constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
-    @UseGuards(AuthGuard('local'))
-    @Post('login')
-    async login(@Request() req) {
-        return await this.authService.login(req.user);
-    }
+  // @UseGuards(AuthGuard('jwt'))
+  @Post('login')
+  async login(@Body() req) {
+    return await this.authService.validateUser(req.email, req.password);
+  }
 
-    @UseGuards(DoesUserExist)
-    @Post('signup')
-    async signUp(@Body() user: UserDto) {
-        return await this.authService.create(user);
-    }
+  @UseGuards(DoesUserExist)
+  @Post('signup')
+  async signUp(@Body() user: UserDto) {
+    return await this.authService.create(user);
+  }
 }

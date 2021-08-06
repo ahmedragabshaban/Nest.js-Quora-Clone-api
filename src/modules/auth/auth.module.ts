@@ -7,7 +7,6 @@ import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/users.module';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
-import { TwilioModule } from 'nestjs-twilio';
 
 @Module({
   imports: [
@@ -16,13 +15,9 @@ import { TwilioModule } from 'nestjs-twilio';
     JwtModule.register({
       secret: process.env.JWTKEY,
       signOptions: { expiresIn: process.env.TOKEN_EXPIRATION },
-    }),
-    TwilioModule.forRoot({
-      accountSid: process.env.TWILIO_ACCOUNT_SID,
-      authToken: process.env.TWILIO_AUTH_TOKEN,
-    }),
+    })
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],
   controllers: [AuthController],
 })
-export class AuthModule {}
+export class AuthModule { }
