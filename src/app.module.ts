@@ -6,7 +6,7 @@ import { AppService } from './app.service';
 import { DatabaseModule } from './core/database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { PostsModule } from './modules/stories/stories.module';
+import { StoriesModule } from './modules/stories/stories.module';
 
 
 @Module({
@@ -15,7 +15,7 @@ import { PostsModule } from './modules/stories/stories.module';
     DatabaseModule,
     UsersModule,
     AuthModule,
-    PostsModule,
+    StoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

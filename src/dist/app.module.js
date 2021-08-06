@@ -37,7 +37,7 @@ var AppModule = /** @class */ (function () {
                 database_module_1.DatabaseModule,
                 users_module_1.UsersModule,
                 auth_module_1.AuthModule,
-                posts_module_1.PostsModule,
+                posts_module_1.StoriesModule,
                 jobs_module_1.JobsModule,
                 user_activites_module_1.UserActivitesModule,
                 user_job_interest_module_1.UserJobInterestModule,
