@@ -26,6 +26,13 @@ export class StoriesController {
     return await this.storieservice.findAll();
   }
 
+  @UseGuards(AuthGuard('jwt'))
+  @Get('user_story')
+  async userStorirs(@Request() req) {
+    return await this.storieservice.userStorirs(req.user.id);
+  }
+
+
   @Get(':id')
   async findOne(@Param('id') id: number): Promise<StoryEntity> {
     // find the story with this id

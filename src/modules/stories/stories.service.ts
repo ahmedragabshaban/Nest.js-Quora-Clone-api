@@ -15,9 +15,16 @@ export class StoriesService {
     return await this.postRepository.create<Story>(story);
   }
 
+  async userStorirs(userId: string): Promise<Story[]> {
+    return await this.postRepository.findAll<Story>({
+      where: { userId },
+      include: [{ model: User, attributes: { exclude: ['password'] } }],
+    });
+  }
+
   async findAll(): Promise<Story[]> {
     return await this.postRepository.findAll<Story>({
-      include: [{ model: User, attributes: { exclude: ['password'] } }],
+      include: [{ model: User, attributes: { exclude: ['id', 'password', 'updatedAt', 'createdAt'] } }],
     });
   }
 

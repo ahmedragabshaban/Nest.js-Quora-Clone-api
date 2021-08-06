@@ -25,7 +25,7 @@ export class Story extends Model<Story> {
 
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    defaultValue: 0
   })
   status: number;
 
