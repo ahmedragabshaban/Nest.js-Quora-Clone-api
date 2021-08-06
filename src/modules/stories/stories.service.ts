@@ -18,7 +18,6 @@ export class StoriesService {
   async userStorirs(userId: string): Promise<Story[]> {
     return await this.postRepository.findAll<Story>({
       where: { userId },
-      include: [{ model: User, attributes: { exclude: ['password'] } }],
     });
   }
 
