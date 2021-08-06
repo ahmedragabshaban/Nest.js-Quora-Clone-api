@@ -52,6 +52,15 @@ export class StoriesController {
     return await this.storieservice.create(story, req.user.id);
   }
 
+
+  @UseGuards(AuthGuard('jwt'))
+  @Post('upvote')
+  async upvote(@Body() id: number, @Request() req): Promise<StoryEntity> {
+    // create a new story and return the newly created story
+    return await this.storieservice.upvote(id, req.user.id);
+  }
+
+
   @UseGuards(AuthGuard('jwt'))
   @Put(':id')
   async update(
