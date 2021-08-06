@@ -24,6 +24,12 @@ export class Story extends Model<Story> {
   body: string;
 
   @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+  })
+  image: string;
+
+  @Column({
     type: DataType.INTEGER,
     defaultValue: 0
   })
